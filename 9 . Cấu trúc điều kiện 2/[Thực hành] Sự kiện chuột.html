@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Sự kiện chuột</title>
+    <style>
+        img {
+            width:200px;
+            position: relative;
+            left:12px;
+            top:0px;
+        }
+
+    </style>
+</head>
+<body>
+
+<img src="ball.png" alt="Ball" id="ball_img">
+<br>
+<button type="button" id="move_left">Move Left</button>
+<button type="button" id="move_right">Move right</button>
+
+<script>
+    var img= document.getElementById("ball_img");
+    var btn_left= document.getElementById("move_left");
+    var btn_right= document.getElementById("move_right");
+    btn_right.onclick =function move_right(){
+        var style= getComputedStyle(img);
+        var current_left_value= parseInt(style.left);
+        img.style.left = (parseInt(current_left_value) + 10 )+"px";
+        current_left_value+= 10;
+        console.log(parseInt(current_left_value));
+    }
+    btn_left.onclick=function move_left(){
+        var style=getComputedStyle(img);
+        var current_left_value = parseInt(style.left);
+        var c
+        current_left_value -=10;
+        img.style.left= current_left_value +"px";
+        console.log(parseInt(current_left_value));
+    }
+    // var k= 10;
+    // setInterval(function(){
+    //     var style=getComputedStyle(img);
+    //     var current_left_value = parseInt(style.left);
+    //     var current_top_value=parseInt(style.top);
+    //     current_left_value +=1;
+    //     current_top_value +=1;
+    //     img.style.left= current_left_value +"px";
+    //     img.style.top=current_top_value+"px"
+    //     console.log(parseInt(current_left_value));
+    // },k)
+</script>
+</body>
+</html>
