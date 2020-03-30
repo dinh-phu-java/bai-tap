@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Ứng dụng vui DoYouLoveMe</title>
+    <style>
+        main{
+            width:200px;
+            height:200px;
+            margin:auto;
+        }
+        button{
+            position:relative;
+            padding:10px;
+            border:1px solid black;
+            border-radius:4px;
+            background: azure;
+            box-shadow: 0 0 10px rgba(246, 255, 189,0.6);
+
+        }
+
+    </style>
+</head>
+<body>
+<main>
+    <h1>Do you love me!</h1>
+    <button id="btn1">Yes</button>
+    <button id="btn2">No</button>
+</main>
+
+
+<script>
+    btn_yes= document.getElementById("btn1");
+    btn_no= document.getElementById("btn2");
+
+    btn_no.onmouseover= function(){
+       // this.style.top="400px";
+        console.log(this.style.top);
+        this.style.top=((Math.random()*500)+1) + "px";
+        this.style.left=((Math.random()*500)+1) +"px";
+    }
+    btn_yes.onclick=function(){
+        alert("I love you too!");
+    }
+</script>
+</body>
+</html>
