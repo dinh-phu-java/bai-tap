@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Tính chỉ số cân nặng của cơ thể</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>BMI</th>
+        <th>Interpretation</th>
+    </tr>
+    <tr>
+        <td id="bmi"></td>
+        <td id="inter"></td>
+    </tr>
+</table>
+
+<script>
+    var bmi_target= document.getElementById("bmi");
+    var inter = document.getElementById("inter");
+    var weight= prompt("Nhập weight (kg)");
+    var height = prompt("Nhập height (cm)");
+    var height_meter = height/100;
+    var bmi_value = weight /(height_meter*height_meter);
+    bmi_target.innerHTML= bmi_value;
+
+   if(bmi_value < 18.5){
+    inter.innerHTML= "Underweight"
+   }else if( bmi_value >= 18.5 && bmi_value < 25 ){
+       inter.innerHTML= "Normal";
+   }else if (bmi_value >= 25 && bmi_value < 30){
+       inter.innerHTML= "Overweight";
+   }else {
+     inter.innerHTML = "Obese";
+   }
+
+</script>
+</body>
+</html>
