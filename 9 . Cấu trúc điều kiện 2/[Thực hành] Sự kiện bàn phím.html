@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Sự kiện bàn phím</title>
+</head>
+<style>
+    div {
+        width:200px;
+        height:200px;
+        position:relative;
+        top:100px;
+        left:550px;
+    }
+    img{
+        width:100%;
+        height:100%;
+    }
+</style>
+<body>
+
+
+<div id="move_target">
+    <img src="ball.png" id="ball" alt="">
+</div>
+
+<script>
+    var move_target=document.getElementById("move_target");
+
+    window.addEventListener('keydown',function(ev){
+
+        var code= ev.keyCode;
+        var key_string= ev.key;
+        var target_style= getComputedStyle(move_target);
+        var current_top_position= parseInt(target_style.top);
+        var current_left_position = parseInt(target_style.left);
+
+        console.log(key_string);
+
+        if(key_string === 'ArrowUp'){
+             current_top_position -= 5;
+            move_target.style.top= current_top_position +"px";
+        }
+        if(key_string === 'ArrowRight'){
+            current_left_position +=5;
+            move_target.style.left = current_left_position +"px";
+        }
+        if(key_string === 'ArrowDown') {
+            current_top_position +=5;
+            move_target.style.top= current_top_position +"px";
+        }
+        if(key_string === 'ArrowLeft'){
+            current_left_position -=5;
+            move_target.style.left= current_left_position +"px";
+        }
+    })
+</script>
+</body>
+</html>
