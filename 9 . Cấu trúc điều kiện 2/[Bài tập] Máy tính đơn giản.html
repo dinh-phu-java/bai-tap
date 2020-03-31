@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Máy tính đơn giản 2</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:0;
+            padding:0;
+        }
+        .calculator{
+            width:400px;
+            margin:10px auto;
+        }
+        .calculator__keys {
+            width:100%;
+
+            /* other necessary CSS */
+        }
+        div button{
+            width:23%;
+            height:30px;
+            margin-top:5px;
+            display: inline-block;
+        }
+        div .key--equal{
+            height:135px;
+            float:right;
+            margin-right:20px;
+        }
+        div button[data-action="clear"]{
+
+        }
+        .calculator__display{
+            width:95%;
+            border:1px solid black;
+            padding:5px 7px;
+            text-align:right;
+            border-radius:4px;
+        }
+        .is-depressed{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="calculator__display">0</div>
+    <div class="calculator__keys">
+        <button class="key--operator" data-action="add">+</button>
+        <button class="key--operator" data-action="subtract">-</button>
+        <button class="key--operator" data-action="multiply">&times;</button>
+        <button class="key--operator" data-action="divide">÷</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="key--equal" data-action="calculate">=</button>
+        <button>5</button>
+        <button>6</button>
+        <button>4</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>0</button>
+        <button data-action="decimal">.</button>
+        <button data-action="clear">AC</button>
+    </div>
+</div>
+
+
+<script>
+    const calculator = document.querySelector(".calculator");
+    const display= calculator.querySelector(".calculator__display");
+    const keys= calculator.querySelector(".calculator__keys");
+
+    keys.addEventListener('click',function(ev){
+       if(ev.target.matches("button")){
+           const key= ev.target;
+           const action = key.dataset.action;
+           var textContent= key.textContent;
+           var displayedNum= display.textContent;
+
+           Array.from(key.parentNode.children).forEach(key => {
+               key.classList.remove("is-depressed");
+           });
+           if(!action){
+               console.log("Number Key");
+               if(displayedNum == '0' || calculator.dataset.operator =='operator'){
+                   display.textContent= textContent;
+                   calculator.dataset.operator="";
+               }else{
+                   display.textContent= displayedNum + textContent;
+               }
+           }
+           if(action == 'add' || action == 'subtract' || action =='multiply' || action =='divide'){
+               console.log("operator key");
+               key.classList.add("is-depressed");
+               calculator.dataset.operator="operator";
+               calculator.dataset.firstNumber=displayedNum;
+               calculator.dataset.calc=action;
+           }
+           if(action == 'decimal'){
+               console.log("decimal key");
+               if (displayedNum.includes(".")){
+
+               }else{
+                   display.textContent = displayedNum +".";
+               }
+           }
+           if (action =='clear'){
+               console.log("Clear Key");
+                display.textContent="0";
+
+           }
+           if(action == 'calculate'){
+               console.log("calculate key");
+                const firstNumber= calculator.dataset.firstNumber;
+                const secondNumber = displayedNum;
+                const cal = calculator.dataset.calc;
+                if(firstNumber== '0' || secondNumber == '0' || cal){
+                    display.textContent= calc(firstNumber,cal,secondNumber);
+                }else{
+                    alert("Hãy nhập số");
+                }
+           }
+       }
+    });
+
+    function calc(firstNum,operator,secondNum){
+        if(operator == 'add'){
+            return parseFloat(firstNum) +parseFloat(secondNum) ;
+        }
+        if(operator == 'subtract'){
+            return parseFloat(firstNum) -parseFloat(secondNum) ;
+        }
+        if(operator == 'multiply'){
+            return parseFloat(firstNum) *parseFloat(secondNum) ;
+        }
+        if(operator == 'divide'){
+            return parseFloat(firstNum) /parseFloat(secondNum) ;
+        }
+    }
+
+</script>
+</body>
+</html>
