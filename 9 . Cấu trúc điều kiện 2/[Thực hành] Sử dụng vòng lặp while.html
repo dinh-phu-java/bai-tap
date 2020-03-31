@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Sử dụng vòng lặp while</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    article{
+        width:920px;
+        border:1px solid black;
+        margin:10px auto;
+
+    }
+    div#ketqua{
+        width:100%;
+        height:500px;
+        border-bottom:1px solid black;
+        padding:10px;
+    }
+    div#wrap_btn {
+
+        padding:10px;
+    }
+    div#wrap_btn button{
+        padding:5px 10px;
+        box-shadow: 0 0 10px rgba(38, 139, 255,0.7);
+        margin-right:10px;
+    }
+</style>
+<body>
+<article>
+    <div id="ketqua">
+        <h2 id="noidungbai"></h2>
+    </div>
+    <div id="wrap_btn">
+        <button id="bai1">Bài 1</button>
+        <button id="bai2">Bài 2</button>
+    </div>
+</article>
+<script>
+    const ketQua= document.getElementById("ketqua");
+    const btnBai1= document.getElementById("bai1");
+    const btnBai2= document.getElementById("bai2");
+    const noiDungBai= document.getElementById("noidungbai");
+
+    btnBai1.onclick= function(){
+        ketQua.innerText="";
+        ketQua.appendChild(noiDungBai);
+        noiDungBai.innerText= "Bài 1: Viết chương trình nhận vào một số từ hộp thoại, việc nhập kết thúc khi người dùng nhập vào giá trị -1. Mỗi giá trị nhập được sẽ được hiển thị ra và thực hiện tính tổng các giá trị đó. "
+        var inputNo;
+        var sum=0;
+        do{
+            inputNo=prompt("Nhập vào số nguyên");
+            sum=sum + parseInt(inputNo);
+        }while(inputNo != -1)
+        var p_tag= document.createElement("p");
+        p_tag.innerHTML="Tổng các số đã nhập vào là: "+sum;
+
+        ketQua.appendChild(p_tag);
+    }
+
+    btnBai2.onclick= function(){
+        ketQua.innerText="";
+        ketQua.appendChild(noiDungBai);
+        noiDungBai.innerText= "Bài 2: Viết chương hình hiển thị thẻ <hr> theo độ rộng từ 1 đến 100. Kết quả sẽ được hiển thị như hình";
+        var hr_tag=document.createElement("hr");
+
+        for(let i =1 ;i<100;i=i+5){
+            var hr_tag=document.createElement("hr");
+            hr_tag.width=i;
+            ketQua.appendChild(hr_tag);
+        }
+
+
+        //ketQua.appendChild(p_tag);
+    }
+
+    
+</script>
+</body>
+</html>
