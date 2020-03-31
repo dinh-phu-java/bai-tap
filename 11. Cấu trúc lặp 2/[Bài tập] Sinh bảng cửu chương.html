@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Sinh bảng cửu chương</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    article{
+        width:920px;
+        border:1px solid black;
+        margin:10px auto;
+
+    }
+    div#ketqua{
+        width:100%;
+        height:500px;
+        border-bottom:1px solid black;
+        padding:10px;
+    }
+    div#wrap_btn {
+
+        padding:10px;
+    }
+    div#wrap_btn button{
+        padding:5px 10px;
+        box-shadow: 0 0 10px rgba(38, 139, 255,0.7);
+        margin-right:10px;
+    }
+    table{
+        border-collapse:collapse;
+        width:100%;
+
+    }
+    table td{
+        padding:5px 7px;
+        text-align: center;
+    }
+</style>
+<body>
+<article>
+    <h2 id="noidungbai"></h2>
+    <div id="ketqua">
+
+    </div>
+    <div id="wrap_btn">
+        <button id="bai1">Bài 1</button>
+
+    </div>
+</article>
+<script>
+    const ketQua= document.getElementById("ketqua");
+    const btnBai1= document.getElementById("bai1");
+
+    const noiDungBai= document.getElementById("noidungbai");
+
+    btnBai1.onclick= function(){
+
+        noiDungBai.innerText= "Sinh bảng cưu chương"
+
+        var html="<table border='1'>";
+        for(let i=2;i<=9;i++){
+            html+="<tr>";
+            let j=1;
+            do{
+                html+="<td>" + i + " * " + j + " = "  + i*j + "</td>";
+                j++;
+            }while (j<=9);
+            html+="</tr>";
+        }
+        html+="</table>";
+        ketQua.innerHTML=html;
+    }
+
+
+
+</script>
+</body>
+</html>
