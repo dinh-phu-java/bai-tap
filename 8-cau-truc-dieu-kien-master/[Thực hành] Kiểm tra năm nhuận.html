@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Kiểm tra năm nhuận</title>
+</head>
+<body>
+<input type="text" id="year" placeholder = "Nhập năm để kiểm tra">
+<p>
+    <button onclick="kiemtra();">Kiểm tra có phải năm nhuận hay không?</button>
+</p>
+<p>
+    Result: <span id="result"></span>
+</p>
+<script>
+    function kiemtra(){
+        var year = document.getElementById("year").value;
+
+        var result = document.getElementById("result");
+        if((year % 4) == 0 && (year % 100) !=0){
+            result.innerHTML= year+ "là năm nhuận";
+        }else if((year % 100)==0 && (year %400)==0) {
+            result.innerHTML = year + " là năm nhuận";
+        }
+        else if((year % 100) == 0 && (year % 400) !=0){
+            result.innerHTML = year +" không là năm nhuận";
+
+        }
+    else{
+            result.innerText= year + " không là năm nhuận";
+        }
+}
+</script>
+</body>
+</html>

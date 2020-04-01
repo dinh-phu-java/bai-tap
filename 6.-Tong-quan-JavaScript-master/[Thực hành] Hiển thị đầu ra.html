@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Hiển thị đầu ra.html</title>
+</head>
+<body>
+    <p id="showMessage"></p>
+    <button onclick="showMessage4();">Submit</button>
+</body>
+<script>
+    function showMessage1()
+    {
+        alert("Hello World");
+    }
+    function showMessage2(){
+        document.write("Hello World");
+    }
+    function showMessage3(){
+        console.log("Hello World");
+    }
+    function showMessage4(){
+        document.getElementById("showMessage").innerHTML="Hello World";
+    }
+    showMessage1();
+    showMessage2();
+    showMessage3();
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Luyện tập với cấu trúc if...else...if</title>
+</head>
+<body>
+    <p id="notice"></p>
+    <p id="result"></p>
+    <p>
+        <label for="">username</label>
+        <input type="text" name="username" id="username" placeholder="username" value="">
+    </p>
+    <p>
+        <label for="">password</label>
+        <input type="password" name="password" id="password" placeholder="password" value ="">
+    </p>
+    <button onclick="checkLogin()">Đăng nhập</button>
+    <script>
+        var notice = document.getElementById("notice");
+        notice.innerHTML="Hãy nhập user và mật khẩu: ";
+        function checkLogin(){
+            var username= document.getElementById("username").value;
+            var password= document.getElementById("password").value;
+            var result= document.getElementById("result");
+            if (username == "admin"){
+
+                if (password == "TheMaster"){
+                    result.innerHTML="Welcome!";
+                }else if(password == ""){
+                    result.innerHTML= "Cancelled!";
+                }else{
+                    result.innerHTML="Wrong Password!";
+                }
+            }else if(username== ""){
+                result.innerHTML= "Cancelled!";
+            }else{
+                result.innerHTML = "I don't know you!";
+            }
+        }
+    </script>
+</body>
+</html>

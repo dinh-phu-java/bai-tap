@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Ứng dụng máy tính</title>
+    <style>
+        a {
+            text-decoration:: none;
+            padding: 5px 7px;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="number1">
+    <input type="text" id="number2">
+    <p>
+        <button id="add" >Addtion (+)</button>
+        <button id="sub" >Subtraction(+)</button>
+        <button id="multi" >Multi(*)</button>
+        <button id="div" >Division(/)</button>
+    </p>
+    <p>
+        Result: <span id="result"></span>
+    </p>
+
+<script>
+    // document.getElementsByTagName("add").onclick = function () {
+    //     var number1 = document.getElementById("number1").value;
+    //     var number2 = document.getElementById("number2").value;
+    //     var result = 0;
+    //     var operation = this.id;
+    //     if (operation === "add") {
+    //         result = parseFloat(number1) + parseFloat(number2);
+    //     }
+    //     if (operation === "sub") {
+    //         result = parseFloat(number1) - parseFloat(number2);
+    //     }
+    //     if (operation === "multi") {
+    //         result = parseFloat(number1) * parseFloat(number2);
+    //     }
+    //     if (operation === "div") {
+    //         result = parseFloat(number1) / parseFloat(number2);
+    //     }
+    //     document.getElementById("result").innerHTML = result;
+    // };
+    // r k =document.getElementsByTagName('button');
+    var but= document.getElementsByTagName('button');
+    var add =but.namedItem('add');
+    var sub =but.namedItem('sub');
+    var multi = but.namedItem('multi');
+    var div = but.namedItem('div');
+    add.onclick=function(){
+        var number1 = document.getElementById("number1").value;
+        var number2 = document.getElementById("number2").value;
+        var result= parseFloat(number1) + parseFloat(number2);
+        document.getElementById("result").innerHTML = result;
+    }
+    sub.onclick=function(){
+        var number1 = document.getElementById("number1").value;
+        var number2 = document.getElementById("number2").value;
+        var result= parseFloat(number1) - parseFloat(number2);
+        document.getElementById("result").innerHTML = result;
+    }
+    multi.onclick=function(){
+        var number1 = document.getElementById("number1").value;
+        var number2 = document.getElementById("number2").value;
+        var result= parseFloat(number1) * parseFloat(number2);
+        document.getElementById("result").innerHTML = result;
+    }
+    div.onclick=function(){
+        var number1 = document.getElementById("number1").value;
+        var number2 = document.getElementById("number2").value;
+        var result= parseFloat(number1) / parseFloat(number2);
+        document.getElementById("result").innerHTML = result;
+    }
+
+
+    // function calculate() {
+    //     var number1 = document.getElementById("number1").value;
+    //     var number2 = document.getElementById("number2").value;
+    //     var result = 0;
+    //     var operation = this;
+    //     console.log(operation);
+    //     //result = parseFloat(number1) + parseFloat(number2);
+    //
+    //     if (operation === "add") {
+    //         result = parseFloat(number1) + parseFloat(number2);
+    //     }
+    //     if (operation === "sub") {
+    //         result = parseFloat(number1) - parseFloat(number2);
+    //     }
+    //     if (operation === "multi") {
+    //         result = parseFloat(number1) * parseFloat(number2);
+    //     }
+    //     if (operation === "div") {
+    //         result = parseFloat(number1) / parseFloat(number2);
+    //     }
+    //     document.getElementById("result").innerHTML = result;
+    // }
+</script>
+</body>
+</html>

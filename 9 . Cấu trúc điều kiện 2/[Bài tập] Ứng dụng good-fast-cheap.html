@@ -94,38 +94,37 @@
 
     good_inner.onclick= function (){
         if(good.checked){
-            good.checked=false;
-            fast.checked=false;
-            cheap.checked=true;
+            good.checked=!good.checked;
+            fast.checked=!fast.checked;
+            cheap.checked=cheap.checked;
         }else{
 
-            good.checked=true;
-            fast.checked=true;
-            cheap.checked=false;
+            good.checked=!good.checked;
+            fast.checked=fast.checked;
+            cheap.checked=!cheap.checked;
         }
     }
     fast_inner.onclick= function (){
         if(fast.checked){
-            fast.checked=false;
-            good.checked=true;
-            cheap.checked=false;
+            good.checked=!good.checked;
+            fast.checked=fast.checked;
+            cheap.checked=cheap.checked;
         }else{
-            fast.checked=true;
-            good.checked=false;
-
-            cheap.checked=true;
+            good.checked=good.checked;
+            fast.checked=!fast.checked;
+            cheap.checked=cheap.checked;
         }
     }
     cheap_inner.onclick= function (){
         if(cheap.checked){
-            cheap.checked=false;
-            fast.checked=true;
-            good.checked=true;
+            good.checked=good.checked;
+            fast.checked=!fast.checked;
+            cheap.checked=!cheap.checked;
 
         }else{
-            cheap.checked=true;
-            fast.checked=false;
-            good.checked=false;
+            good.checked=!good.checked;
+            fast.checked=fast.checked;
+            cheap.checked=!cheap.checked;
         }
     }
 

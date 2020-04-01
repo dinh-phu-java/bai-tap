@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Biến, kiểu dữ liệu và toán tử</title>
+</head>
+<body>
+    <p id="diemtrungbinh">Bài 1: Tính điểm trung bình </p>
+    <button onclick="bai1()">Bài 1</button>
+    <p></p>
+    <p id="chuyendo">Bài 2: Chuyển từ độ C sang độ F</p>
+    <button onclick="bai2()">Bài 2</button>
+    <p></p>
+    <p id="dientich">Bài 3: Tính diện tích hình tròn</p>
+    <button onclick="bai3()">Bài 3</button>
+    <p></p>
+    <p id="chuvi">Bài 4: Tính chu vi hình tròn</p>
+    <button onclick="bai4()">Bài 4</button>
+<script>
+    // bai1 tinh diem trung binh cua sinh vien
+    function bai1(){
+        var diemVatLy =prompt("Nhập điểm vật lý ");
+        var diemHoaHoc= prompt("Nhập điểm hóa học ");
+        var diemSinhHoc= prompt("Nhập điểm Sinh Học ");
+
+        var diemTrungBinh = (parseFloat(diemVatLy) + parseFloat(diemHoaHoc) + parseFloat(diemSinhHoc))/3;
+
+        document.getElementById("diemtrungbinh").innerHTML="Điểm trung bình là: "+ diemTrungBinh;
+
+    }
+    // bai 2 chuyen tu do C sang do F
+    function bai2(){
+        var doC= prompt("Nhập độ C ");
+
+        var doF = (9*doC)/5 +32;
+
+        document.getElementById("chuyendo").innerHTML=doC + " chuyển sang độ F là: "+ doF;
+    }
+    // bai 3 tinh dien tich hinh tron
+    function bai3(){
+        var r= prompt("Nhập bán kính hình tròn ");
+
+        var A= Math.PI * r*r;
+
+        document.getElementById("dientich").innerHTML= "Diện Tích Hình Tròn là: "+A;
+
+
+    }
+    // bai 4 tinh chu vi hinh tron
+    function bai4(){
+        var r =prompt("Nhập bán kính hình tròn");
+
+        var p = 2*r *Math.PI;
+
+        document.getElementById("chuvi").innerHTML= "Chu vi hinh tròn là " + p;
+    }
+
+</script>
+</body>
+</html>

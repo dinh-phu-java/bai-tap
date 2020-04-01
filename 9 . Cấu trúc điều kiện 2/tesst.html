@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p, section, article{
+            box-sizing:border-box;
+            display:block;
+            width:100%;
+            height:150px;
+            margin:5px;
+            border:1px solid black;
+        }
+        div {
+            width:400px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <p>check p</p>
+        <section>check section</section>
+        <article>check article</article>
+    </div>
+
+<script>
+
+
+    class Person{
+        constructor(name){
+            this.name=name;
+            this.id=Person.indexNext++;
+        }
+    }
+    Person.indexNext=0;
+    var marcelo = new Person("Marcelo");
+    var kante = new Person("Kante");
+    var pjanic = new Person("Pjanic");
+    var aguero= new Person("Aguero");
+
+    var arr= [marcelo,kante,pjanic,aguero];
+
+    var k= arr.find(obj => obj.id == 2);
+    console.log(k);
+
+
+
+</script>
+</body>
+</html>

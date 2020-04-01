@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Máy tính đơn giản 2</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:0;
+            padding:0;
+        }
+        .calculator{
+            width:400px;
+            margin:10px auto;
+        }
+        .calculator__keys {
+            width:100%;
+
+            /* other necessary CSS */
+        }
+        div button{
+            width:23%;
+            height:30px;
+            margin-top:5px;
+            display: inline-block;
+        }
+        div .key--equal{
+            height:135px;
+            float:right;
+            margin-right:20px;
+
+        }
+        div button[data-action="clear"]{
+
+        }
+        .calculator__display{
+            width:95%;
+            border:1px solid black;
+            padding:5px 7px;
+            text-align:right;
+            border-radius:4px;
+        }
+        .is-depressed{
+            background-color: #ccc;
+        }
+        .calculator__real{
+            width:95%;
+            padding:5px 7px;
+            text-align:right;
+
+            margin-bottom:5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="calculator__real"></div>
+    <div class="calculator__display">0</div>
+    <div class="calculator__keys">
+        <button class="key--operator" data-action="add" data-set="+">+</button>
+        <button class="key--operator" data-action="subtract" data-set="-">-</button>
+        <button class="key--operator" data-action="multiply" data-set="x">&times;</button>
+        <button class="key--operator" data-action="divide" data-set="÷">÷</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="key--equal" data-action="calculate">=</button>
+        <button>5</button>
+        <button>6</button>
+        <button>4</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>0</button>
+        <button data-action="decimal">.</button>
+        <button data-action="clear">AC</button>
+
+    </div>
+</div>
+
+
+<script>
+    var calculator = document.querySelector(".calculator");
+    var display= calculator.querySelector(".calculator__display");
+    var keys= calculator.querySelector(".calculator__keys");
+    var real = calculator.querySelector(".calculator__real");
+
+    keys.addEventListener('click',function(ev){
+        if(ev.target.matches("button")){
+            const key= ev.target;
+            const action= key.dataset.action;
+            var keyContent= key.textContent;
+            var displayedNum= display.textContent;
+            real.textContent= real.textContent + keyContent;
+
+            Array.from(key.parentNode.children).forEach( child => child.classList.remove("is-depressed"));
+
+            console.log(action);
+            if(!action){
+                console.log("Key Number!");
+                if( displayedNum == '0' || calculator.dataset.operation == 'operator'){
+                    display.textContent= keyContent;
+                    calculator.dataset.operation ="";
+                }else{
+                    display.textContent = displayedNum + keyContent;
+                    real.textContent= displayedNum + keyContent;
+                }
+            }
+
+            if(action == 'add' || action =='subtract' || action == 'multiply' || action == 'divide'){
+                console.log("Key oper!");
+                key.classList.add("is-depressed");
+                calculator.dataset.firstNum=displayedNum;
+                calculator.dataset.operator= action;
+                calculator.dataset.operation ='operator';
+                //real.textContent= real.textContent + " " +key.dataset.set;
+            }
+
+            if(action =='clear'){
+                console.log("Key Clear!");
+                display.textContent= '0';
+                real.textContent = " ";
+            }
+            if(action == 'decimal'){
+                console.log("Key Decimal!");
+                if(!displayedNum.includes(".")){
+                    display.textContent =displayedNum + ".";
+                   // real.textContent = real.textContent +".";
+                }
+            }
+            if(action =='calculate'){
+                if(displayedNum != '0'){
+                    const firstNum= calculator.dataset.firstNum;
+                    const oper = calculator.dataset.operator;
+                    const secondNum = displayedNum;
+                    display.textContent = calc(firstNum,oper,secondNum);
+
+                    real.textContent = real.textContent  + display.textContent;
+                }
+            }
+
+        }
+    });
+
+    function calc(first,oper,second){
+        if(oper == 'add'){
+            return parseFloat(first) + parseFloat(second);
+        }
+        if(oper == 'subtract'){
+            return parseFloat(first) - parseFloat(second);
+        }
+        if(oper == 'multiply'){
+            return parseFloat(first) * parseFloat(second);
+        }
+        if(oper == 'divide'){
+            return parseFloat(first) / parseFloat(second);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // const calculator= document.querySelector(".calculator");
+    // const keys= calculator.querySelector(".calculator__keys");
+    // const display =calculator.querySelector(".calculator__display");
+    //
+    // keys.addEventListener('click',function(ev){
+    //     if(ev.target.matches('button')){
+    //         const key= ev.target;
+    //         const action=key.dataset.action;
+    //         const keyContent=key.textContent;
+    //         const displayedNum=display.textContent;
+    //         var  previousKeyType = calculator.dataset.previousKeyType;
+    //         var count =0;
+    //         Array.from(key.parentNode.children)
+    //             .forEach(k => k.classList.remove('is-depressed'));
+    //
+    //
+    //         if(!action){
+    //             console.log("number key");
+    //             if(displayedNum === '0' || previousKeyType === 'operator'){
+    //                 display.textContent = keyContent;
+    //                 calculator.dataset.previousKeyType= " ";
+    //             }else{
+    //                 display.textContent= displayedNum + keyContent;
+    //             }
+    //
+    //         }
+    //
+    //         if(action == 'add' || action == 'subtract' || action == 'multiply' || action =='divide'){
+    //             console.log("operator key");
+    //             key.classList.add("is-depressed");
+    //             calculator.dataset.previousKeyType='operator';
+    //             calculator.dataset.firstNumber=displayedNum;
+    //             calculator.dataset.operator=action;
+    //         }
+    //
+    //         if(action ==='decimal') {
+    //             console.log("decimal");
+    //             if (displayedNum.includes(".")){
+    //
+    //             }else{
+    //                 display.textContent=displayedNum+".";
+    //             }
+    //
+    //         }
+    //
+    //         if(action === 'clear') {
+    //             console.log("clear");
+    //             display.textContent=0;
+    //             calculator.dataset.firstNumber=0;
+    //         }
+    //
+    //         if(action ==='calculate') {
+    //             console.log("calculate");
+    //             const secondNumber = displayedNum;
+    //             const firstNumber =calculator.dataset.firstNumber;
+    //             const operator= calculator.dataset.operator;
+    //
+    //             display.textContent= calc(firstNumber,operator,secondNumber);
+    //             calculator.dataset.firstNumber=display.textContent;
+    //         }
+    //     }
+    // });
+    //
+    // function calc(firstNum,operator,secondNum){
+    //     if(operator == 'add'){
+    //         return parseFloat(firstNum) +parseFloat(secondNum) ;
+    //     }
+    //     if(operator == 'subtract'){
+    //         return parseFloat(firstNum) -parseFloat(secondNum) ;
+    //     }
+    //     if(operator == 'multiply'){
+    //         return parseFloat(firstNum) *parseFloat(secondNum) ;
+    //     }
+    //     if(operator == 'divide'){
+    //         return parseFloat(firstNum) /parseFloat(secondNum) ;
+    //     }
+    // }
+</script>
+</body>
+</html>
