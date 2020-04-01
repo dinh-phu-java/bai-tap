@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Tạo và thao tác với mảng</title>
+</head>
+<body>
+
+<input type="text" id="input_arr" placeholder="Nhập số"> <button id="btn_add">Add</button> <button id="btn_display">Display</button>
+<hr>
+<div id="ketqua"></div>
+
+
+<script>
+    let btn_add= document.getElementById("btn_add");
+    let btn_display= document.getElementById("btn_display");
+    let input_arr = document.getElementById("input_arr");
+    let ketqua= document.getElementById("ketqua");
+    let arrResult= new Array();
+
+
+    btn_add.onclick= function(){
+      let input_value= input_arr.value;
+        arrResult.push(input_value) ;
+      input_arr.value=" ";
+
+      // for (var i = 0; i< arrResult.length;i++){
+      //     console.log(i+ " " + arrResult[i]);
+      // }
+
+
+    };
+
+    btn_display.onclick=function(){
+
+        console.log(arrResult.length);
+        for(let i = 0 ; i < arrResult.length;i++){
+
+            let p_tag= document.createElement("p");
+             p_tag.innerHTML= "Element thứ "+ i + " là: " + arrResult[i];
+             ketqua.appendChild(p_tag);
+
+        }
+    }
+
+</script>
+</body>
+
+
+</html>

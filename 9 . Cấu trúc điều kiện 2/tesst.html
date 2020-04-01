@@ -30,22 +30,28 @@
 <script>
 
 
-    class Person{
-        constructor(name){
-            this.name=name;
-            this.id=Person.indexNext++;
-        }
+    const cards=[];
+
+    for (let suit of ['H','C','D','S'])
+        for(let value=1 ; value<=13 ;value++)
+            cards.push({suit,value});
+
+    //var newCard= cards.filter(x => x.value ==2);
+
+    function cardToString(c){
+        const suits = { 'H' : '\u2665' , 'C' : '\u2663' , 'D' : '\u2666' , 'S' : '\u2660' };
+        const values = { 1 : 'A' , 11 : 'J' , 12 : 'Q' , 13 : 'K' };
+        for( let i=2 ; i <= 10 ; i++) values[i] = i;
+        return values[c.value] + suits[c.suit];
     }
-    Person.indexNext=0;
-    var marcelo = new Person("Marcelo");
-    var kante = new Person("Kante");
-    var pjanic = new Person("Pjanic");
-    var aguero= new Person("Aguero");
 
-    var arr= [marcelo,kante,pjanic,aguero];
+   var k= cards.filter( x => x.value== 2).map(cardToString);
 
-    var k= arr.find(obj => obj.id == 2);
+   var l = cards.filter(x=> x.value > 10 && x.suit=='H').map(cardToString);
+
+
     console.log(k);
+
 
 
 
