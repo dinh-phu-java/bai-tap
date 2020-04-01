@@ -1,10 +1,120 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>[Bài tập] Sử dụng các hàm có sẵn của mảng</title>
 </head>
-<body>
+<style>
+    *{
+        box-sizing: border-box;
+    }
 
+    article{
+        width:920px;
+        border:1px solid black;
+        margin:10px auto;
+
+    }
+    div#ketqua{
+        width:100%;
+        height:500px;
+        border-bottom:1px solid black;
+        padding:10px;
+    }
+    div#wrap_btn {
+
+        padding:10px;
+    }
+    div#wrap_btn button{
+        padding:5px 10px;
+        box-shadow: 0 0 10px rgba(38, 139, 255,0.7);
+        margin-right:10px;
+    }
+</style>
+<body>
+<article>
+    <div id="ketqua">
+        <h2 id="noidungbai"></h2>
+    </div>
+    <div id="wrap_btn">
+        <button id="bai1">Bài 1</button>
+        <button id="bai2">Bài 2</button>
+        <button id="bai3">Bài 3</button>
+    </div>
+</article>
+<script>
+    const ketQua= document.getElementById("ketqua");
+    const btnBai1= document.getElementById("bai1");
+    const btnBai2= document.getElementById("bai2");
+    const btnBai3= document.getElementById("bai3");
+    const noiDungBai= document.getElementById("noidungbai");
+
+    btnBai1.onclick= function(){
+         noiDungBai.innerText= "Bài 1: Viết một chương trình Javascript để nối tất cả các phần tử trong một mảng chuỗi lại với nhau.";
+         var arrInput= new Array();
+
+         do{
+             arrInput[arrInput.length]= prompt("Nhập dữ liệu vào mảng");
+         }while(confirm("Có nhập số vào mảng nữa hay không?"))
+        var p_tag= document.createElement("p");
+         p_tag.innerHTML= arrInput.join(",");
+        ketQua.appendChild(p_tag);
+    }
+
+    btnBai2.onclick= function(){
+        noiDungBai.innerText= "Bài 2:Viết một chương trình nhận một số nhập vào và chèn dấu (-) giữa 2  số chẵn.";
+        var arrInput= new Array();
+
+        do{
+            arrInput[arrInput.length]= prompt("Nhập dữ liệu vào mảng");
+        }while(confirm("Có nhập số vào mảng nữa hay không?"));
+
+        for (let i = 0; i <arrInput.length ; i ++){
+
+            if(arrInput[i] % 2 ==0){
+
+                if(arrInput[i+1] % 2 == 0){
+                    arrInput[i]=arrInput[i]+"-";
+                }
+            }
+        }
+
+        var p_tag= document.createElement("p");
+        p_tag.innerHTML= arrInput.join("");
+        ketQua.appendChild(p_tag);
+
+    }
+
+    btnBai3.onclick= function(){
+        noiDungBai.innerText= "Bài 3:Viết một chương trình nhập vào một chuỗi và chuyển các ký tự chữ thường trong chuỗi vừa nhập sang thành dạng chữ hoa. Ví dụ: nếu bạn nhập vào chuỗi 'The Quick Brown Fox' kết quả của chương trình là 'tHE qUICK bROWN fOX'.";
+        var arrInput= new Array();
+
+        do{
+            arrInput[arrInput.length]= prompt("Nhập dữ liệu vào mảng");
+        }while(confirm("Có nhập số vào mảng nữa hay không?"));
+
+        const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+        for (let i =0 ; i < arrInput.length; i++){
+            if(UPPER.indexOf(arrInput[i]) == -1){
+                arrInput[i]= arrInput[i].toUpperCase();
+            }else{
+                arrInput[i]=arrInput[i].toLowerCase();
+            }
+        }
+
+        var p_tag= document.createElement("p");
+        p_tag.innerHTML= arrInput.join("");
+        ketQua.appendChild(p_tag);
+
+    }
+
+
+
+
+
+
+</script>
 </body>
 </html>
