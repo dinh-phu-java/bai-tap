@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Hàm kiểm tra số nguyên tố</title>
+</head>
+<body>
+<h1>Kiểm tra số nguyên tố</h1>
+<p>Số nguyên tố là số chia hết cho 1 và chính nó </p>
+
+
+<script>
+
+    let num_to_check = prompt("Nhập số cần kiểm tra");
+
+    if(kiemTraSoNT(num_to_check)){
+        alert(num_to_check + " là số NT");
+    }else{
+        alert(num_to_check + " không là số NT");
+    }
+
+    function kiemTraSoNT(num){
+        let checked= true;
+        for(let i = 2 ; i<=num/2 ; i++){
+            if(num % 2 == 0){
+                checked= false;
+                break;
+            }
+        }
+        return checked;
+    }
+
+</script>
+</body>
+</html>
