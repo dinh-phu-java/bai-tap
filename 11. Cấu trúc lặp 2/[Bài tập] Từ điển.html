@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Từ điển</title>
+    <style>
+        input{
+            padding:7px 5px;
+            border-radius:4px;
+            margin-right:10px;
+            border:1px solid black;
+        }
+        button{
+            padding:5px 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <p id="allow_word">Bạn hãy nhập: Hello , why, who, what ,how!</p>
+        <input type="text" id="input_word" placeholder="Nhập từ cần tìm"> <button id="search">Search</button>
+        <p>Kết quả là : <span id="result"></span></p>
+    </main>
+
+    <script>
+        const dictionnary= [
+            {"hello": "xin chào"},
+            {"why" :"Tại sao"},
+            {"who": "Là ai"},
+            {"what":"Cái gì"},
+            {"how":"Như nào"}
+        ];
+        const input_word = document.getElementById("input_word");
+        const result= document.getElementById("result");
+        const search =document.getElementById("search");
+
+
+        search.onclick=function(){
+            var search_word= input_word.value.toLowerCase();
+
+            var search_result= dictionnary.find(function(x){
+                return x[search_word];
+            });
+
+            result.innerText= input_word.value + " Translate to vietnamese is: " + search_result[search_word];
+
+            input_word.value= "";
+        }
+    </script>
+
+</body>
+</html>
