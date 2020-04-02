@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Chuyển đổi nhiệt độ</title>
+</head>
+<body>
+
+<script>
+     let f_temp_value= prompt("Nhập độ F");
+     let result = f_temp_value + " độ F chuyển sang độ C là: "+ convertFtoC(f_temp_value).toFixed(2) + " độ C";
+     alert(result);
+    function convertFtoC(f_temperature){
+        let c_temperature;
+        c_temperature= (f_temperature-32)/1.8;
+        return c_temperature;
+    }
+
+</script>
+
+</body>
+</html>
