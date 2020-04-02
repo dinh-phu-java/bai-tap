@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Luyện tập tạo và sử dụng hàm 02</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    article{
+        width:920px;
+        border:1px solid black;
+        margin:10px auto;
+
+    }
+    div#ketqua{
+        width:100%;
+        height:500px;
+        border-bottom:1px solid black;
+        padding:10px;
+    }
+    div#wrap_btn {
+
+        padding:10px;
+    }
+    div#wrap_btn button{
+        padding:5px 10px;
+        box-shadow: 0 0 10px rgba(38, 139, 255,0.7);
+        margin-right:10px;
+    }
+</style>
+<body>
+<article>
+    <div id="ketqua">
+        <h2 id="noidungbai"></h2>
+    </div>
+    <div id="wrap_btn">
+        <button id="bai1">Bài 1</button>
+        <button id="bai2">Bài 2</button>
+        <button id="bai3">Bài 3</button>
+        <button id="bai4">Bài 4</button>
+        <button id="bai5">Bài 5</button>
+        <button id="bai6">Bài 6</button>
+    </div>
+</article>
+<script>
+    const ketQua= document.getElementById("ketqua");
+    const btnBai1= document.getElementById("bai1");
+    const btnBai2= document.getElementById("bai2");
+    const btnBai3= document.getElementById("bai3");
+    const btnBai4= document.getElementById("bai4");
+    const btnBai5= document.getElementById("bai5");
+    const btnBai6= document.getElementById("bai6");
+    const noiDungBai= document.getElementById("noidungbai");
+
+    btnBai1.onclick= function(){
+        noiDungBai.innerText= "Bài 1: Viết hàm tính bình phương của một số bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.";
+
+        let input_no = prompt("Nhập 1 số để tính bình phương");
+
+        alert(powNubmer(input_no));
+
+
+
+    }
+    btnBai2.onclick= function(){
+        noiDungBai.innerText= "Bài 2: Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được";
+
+        let input_r = prompt("Nhập bán kính");
+
+        alert("Chu vi hình tròn là: "+ rectC(input_r));
+        alert("Diện tích hình tròn là: "+ rectS(input_r));
+
+    }
+
+    btnBai3.onclick= function(){
+        noiDungBai.innerText= "Bài 3: Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.";
+
+        let input_r = prompt("Nhập vào 1 số để tính giai thừa");
+
+        alert("Giai thừa của số " + input_r + " là: "+ factorial(input_r));
+
+    }
+
+    btnBai4.onclick= function(){
+        noiDungBai.innerText= "Bài 4: Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không. Nếu là ký tự số hàm trả về true, ngược lại trả về false.";
+
+        let input_r = (prompt("Nhập vào 1 số kiểm tra có phải số hay không")) ;
+
+        var result = checkInterger(input_r) ;
+
+        if(result){
+            alert(input_r + " là số");
+        }else{
+            alert(input_r + " không phải là số");
+        }
+
+    }
+
+    btnBai5.onclick= function(){
+        noiDungBai.innerText= "Bài 5: Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.";
+
+        let so1 = parseInt(prompt("Nhập vào số thứ nhất "));
+        let so2 = parseInt(prompt("Nhập vào số thứ 2"));
+        let so3 = parseInt(prompt("Nhập vào số thú 3 "));
+
+        var result = checkMin(so1,so2,so3) ;
+
+        alert("Số nhỏ nhất là : "+ result);
+
+    }
+
+    btnBai6.onclick= function(){
+        noiDungBai.innerText= "Bài 5: Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.";
+
+        let so1 = parseInt(prompt("Nhập vào số bất kỳ "));
+
+        let result= checkPositiveInteger(so1);
+
+        if(result){
+            alert(so1 + " Là số nguyên dương");
+
+        }else{
+            alert(so1 + " Không là số nguyên dương");
+        }
+
+    }
+
+    function powNubmer(a){
+        return parseFloat(a) * parseFloat(a);
+    }
+    function rectS(a){
+        return (parseFloat(a) * parseFloat(a)) * Math.PI;
+    }
+    function rectC(a){
+        return 2 * Math.PI * parseFloat(a);
+    }
+
+    function factorial(n) {
+        return (n != 1) ? n * factorial(n - 1) : 1;
+    }
+    function checkInterger(a){
+        let check = typeof a;
+        if(check === 'number'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function checkMin(a,b,c){
+        let arr = [a,b,c];
+        let min=arr[0];
+        for(let i = 0 ; i< arr.length ; i++){
+            if(min > arr[i]){
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+    function checkPositiveInteger(a){
+        if(parseInt(a) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>
