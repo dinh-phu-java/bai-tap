@@ -1,0 +1,86 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Chuyển đổi giữa feet và meters</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    article{
+        width:920px;
+        border:1px solid black;
+        margin:10px auto;
+
+    }
+    div#ketqua{
+        width:100%;
+        height:500px;
+        border-bottom:1px solid black;
+        padding:10px;
+    }
+    div#wrap_btn {
+
+        padding:10px;
+    }
+    div#wrap_btn button{
+        padding:5px 10px;
+        box-shadow: 0 0 10px rgba(38, 139, 255,0.7);
+        margin-right:10px;
+    }
+</style>
+<body>
+<article>
+    <div id="ketqua">
+        <h2 id="noidungbai"></h2>
+    </div>
+    <div id="wrap_btn">
+        <button id="bai1">Bài 1</button>
+
+    </div>
+</article>
+<script>
+    const ketQua= document.getElementById("ketqua");
+    const btnBai1= document.getElementById("bai1");
+
+    const noiDungBai= document.getElementById("noidungbai");
+
+    btnBai1.onclick= function(){
+        noiDungBai.innerText= "[Bài tập] Chuyển đổi giữa feet và meters";
+
+
+        let meter_value= prompt("Nhập meter");
+        let feet_value = prompt("Nhập foot")
+
+
+
+        var p1_tag= document.createElement("p");
+        var p2_tag= document.createElement("p");
+        p1_tag.innerHTML= meter_value + " Meter to Feet is: "+ meterToFeet(meter_value) +" feet";
+        p2_tag.innerHTML = feet_value + " Feet to Meter is: "+ feetToMeter(feet_value) +" meter";
+        ketQua.appendChild(p1_tag);
+        ketQua.appendChild(p2_tag);
+
+    }
+
+    function meterToFeet(meter){
+        let feet= meter * 3.279;
+        return feet;
+    }
+    function feetToMeter(feet){
+        let meter= 0.305 * feet;
+        return meter;
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>
