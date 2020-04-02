@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Luyện tập tạo và sử dụng hàm 01</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    article{
+        width:920px;
+        border:1px solid black;
+        margin:10px auto;
+
+    }
+    div#ketqua{
+        width:100%;
+        height:500px;
+        border-bottom:1px solid black;
+        padding:10px;
+    }
+    div#wrap_btn {
+
+        padding:10px;
+    }
+    div#wrap_btn button{
+        padding:5px 10px;
+        box-shadow: 0 0 10px rgba(38, 139, 255,0.7);
+        margin-right:10px;
+    }
+</style>
+<body>
+<article>
+    <div id="ketqua">
+        <h2 id="noidungbai"></h2>
+    </div>
+    <div id="wrap_btn">
+        <button id="bai1">Bài 1</button>
+        <button id="bai2">Bài 2</button>
+        <button id="bai5">Bài 5</button>
+    </div>
+</article>
+<script>
+    const ketQua= document.getElementById("ketqua");
+    const btnBai1= document.getElementById("bai1");
+    const btnBai2= document.getElementById("bai2");
+    const btnBai4= document.getElementById("bai4");
+    const btnBai5= document.getElementById("bai5");
+    const noiDungBai= document.getElementById("noidungbai");
+
+    btnBai1.onclick= function(){
+        noiDungBai.innerText= "Bài 1: Tạo hàm alertMessage() hiển thị hộp thoại chứa chuỗi  Xin chao Gọi hàm từ trong phần body của trang web.";
+        alertMessage();
+
+
+
+    }
+
+    btnBai2.onclick=function(){
+        noiDungBai.innerText= "Bài 3: Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai, hiển thị hộp thoại thông báo cho người dùng. Nếu giá trị của tham số thứ nhất nhỏ hơn hoặc bằng tham số thứ hai, trả về tổng của hai tham số.";
+        let no1 = prompt("nhập số 1");
+        let no2= prompt("nhập số 2");
+        let result= bai3(no1,no2);
+        let p_tag= document.createElement("p");
+        p_tag.innerHTML ="Kết quả là: " + result;
+
+        ketQua.appendChild(p_tag);
+
+
+    }
+
+
+    btnBai5.onclick=function(){
+        noiDungBai.innerText= "Bài 5";
+        let sao1= [ "Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+        let sao2= [ "Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major" , "Leo"];
+
+        let nhapTenSao= prompt('Nhập tên sao tương ứng: "Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"');
+
+
+
+        let  index1 = sao1.indexOf(nhapTenSao);
+        let p_tag = document.createElement("p");
+        p_tag.innerHTML ="Tên sao tương ứng là: " +  sao2[index1];
+
+        ketQua.appendChild(p_tag);
+
+    }
+    function alertMessage(){
+        alert("Xin Chào");
+    }
+    function bai3(a,b){
+
+        if(parseInt(a)>parseInt(b)){
+            return "tham số 1 lớn hơn tham số 2";
+        }else{
+            return parseInt(a)+parseInt(b);
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
