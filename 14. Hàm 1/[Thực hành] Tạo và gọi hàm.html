@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Tạo và gọi hàm</title>
+</head>
+<body>
+
+
+    <script>
+        let people_input= prompt("Input your word");
+        let theAnswer = processConfirm(people_input);
+
+        alert(theAnswer);
+
+        function processConfirm(answer){
+            let result ="";
+            if(answer){
+                result= "Ok. Thanks for your response";
+            }else{
+                result= "Please give me your idea";
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>
