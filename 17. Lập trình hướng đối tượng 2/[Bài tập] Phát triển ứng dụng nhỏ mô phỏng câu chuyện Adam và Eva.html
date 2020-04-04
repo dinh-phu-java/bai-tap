@@ -14,7 +14,7 @@
             this.weight --;
         }
         this.isEmpty =function(){
-            if(this.weight ==0){
+            if(this.weight <=0){
                 return true;
             }
             return false;
@@ -48,7 +48,7 @@
             apple.decrease();
         }
         this.say= function(str){
-            alert(this.name +" say that: "+str+");
+            alert(this.name +" say that: "+str);
         }
         this.getName= function(){
             return this.name;
@@ -64,8 +64,19 @@
         }
 
     }
+    let apple = new Apple(4);
+    let adam= new Human("adam",true,70);
+    let eva= new Human("eva",false,50);
 
-
+    do{
+        adam.eat(apple);
+        eva.eat(apple);
+        console.log(adam.say(" ăn táo"));
+        console.log(eva.say( " ăn táo"));
+        if(apple.isEmpty()){
+            alert("hết táo");
+        }
+    }while(!apple.isEmpty())
 </script>
 </body>
 </html>
