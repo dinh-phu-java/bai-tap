@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Funny circles</title>
+    <style>
+        canvas{
+            border:1px solid black;
+            margin:10px;
+            background-color:#cccccc;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        let myCircle=[];
+
+        function startBuildCricle(){
+            canvasCreate.create(700,700);
+
+
+            let random_number= Math.floor(Math.random() * 150) + 50;
+
+            for(let i= 0; i< random_number; i++ ){
+                myCircle.push(new circleComponent());
+            }
+
+            for (let i= 0; i< myCircle.length;i++){
+                myCircle[i].update();
+            }
+
+
+            console.log(myCircle);
+        }
+
+        let canvasCreate = {
+            canvas : document.createElement("canvas"),
+            create(width,height){
+                this.canvas.width=width;
+                this.canvas.height=height;
+                this.context= this.canvas.getContext("2d");
+                document.body.appendChild(this.canvas);
+            },
+            randomHex(){
+                return Math.floor(Math.random()*255);
+            },
+            randomColor(){
+                let red=this.randomHex();
+                let green= this.randomHex();
+                let blue = this.randomHex();
+                this.color= `rgb(${red},${green},${blue})`;
+                return this.color;
+            },
+            randomRadius(){
+                 this.radius= Math.floor((Math.random()*30)) + 10;
+                 return this.radius;
+            },
+            randomX(){
+                this.x=Math.floor((Math.random()*this.canvas.width))  +this.randomRadius();
+                return this.x;
+            },
+            randomY(){
+                this.y =Math.floor((Math.random()*this.canvas.height))  + this.randomRadius();
+                return this.y
+            }
+
+        }
+
+
+
+        let circleComponent= function(){
+            this.x=canvasCreate.randomX();
+            this.y=canvasCreate.randomY();
+            this.radius=canvasCreate.randomRadius();
+            let ctx= canvasCreate.context;
+            let color = canvasCreate.randomColor();
+            this.update=function(){
+                ctx.beginPath();
+                ctx.fillStyle=color;
+                ctx.arc(this.x,this.y,this.radius,0,2*Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+        }
+
+
+
+        window.onload= startBuildCricle();
+    </script>
+</body>
+</html>
