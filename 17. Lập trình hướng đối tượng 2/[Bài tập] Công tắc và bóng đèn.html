@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Công tắc và bóng đèn</title>
+    <style>
+        img {
+            margin:10px;
+            display:block;
+        }
+        button{
+            margin:15px 15px 15px 30px;
+            padding:10px 15px;
+        }
+    </style>
+</head>
+<body>
+<img src="lamp_off.jpg" id="lamp" alt="">
+<button id="on" >Turn On</button>
+<button id="off">Turn Off</button>
+    <script>
+        // let lamp1 ={
+        //     image: document.getElementById("lamp"),
+        //     changeStatus(){
+        //         this.image.src='lamp_on.jpg';
+        //     }
+        // }
+        //
+        // lamp1.changeStatus();
+
+
+        let switchButton =  {
+            status : false,
+            on_btn : document.getElementById("on"),
+            off_btn :document.getElementById("off"),
+            connectLamp(lamp_input){
+                lamp_input.status=this.status;
+                lamp_input.changeStatus();
+            },
+            setOn(){
+                    this.status= true;
+            },
+            setOff(){
+                  this.status=false;
+            }
+        }
+        let lamp={
+            status:false,
+            img:document.getElementById("lamp"),
+            changeStatus(){
+                if(this.status== false){
+                    this.img.src= 'lamp_off.jpg';
+                }else{
+                    this.img.src='lamp_on.jpg'
+                }
+            }
+        }
+        let on_button= document.getElementById("on");
+        let off_button= document.getElementById("off");
+        on_button.onclick=function(){
+            switchButton.setOn();
+            switchButton.connectLamp(lamp);
+        }
+        off_button.onclick=function(){
+            switchButton.setOff();
+            switchButton.connectLamp(lamp);
+        }
+
+
+
+    </script>
+</body>
+</html>
