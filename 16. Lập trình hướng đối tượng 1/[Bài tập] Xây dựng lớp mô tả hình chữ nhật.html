@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Xây dựng lớp mô tả hình chữ nhật</title>
+    <style>
+        canvas{
+            border:1px solid black;
+            margin:10px;
+            background-color:#ccc;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    let myRectangle;
+    function startProgram(){
+        createCanvas.makeCanvas();
+        myRectangle= new Rectangle(50,50,150,70);
+        myRectangle.createRec();
+        myRectangle.getS();
+        myRectangle.getP();
+    }
+
+    let createCanvas= {
+        canvas : document.createElement("canvas"),
+        makeCanvas(){
+            this.canvas.width=500;
+            this.canvas.height=500;
+            this.context=this.canvas.getContext("2d");
+            document.body.appendChild(this.canvas);
+        }
+    };
+
+    let Rectangle =function(a,b,width,height){
+        this.a = a;
+        this.b=b;
+        this.width=width;
+        this.height=height;
+        let ctx = createCanvas.context;
+        this.getS= function(){
+            let s= this.a * this.b;
+            ctx.font="14px Arial";
+            ctx.fillStyle="black";
+            ctx.fillText("Diện tích là : " +s , createCanvas.canvas.width -150,40);
+        }
+        this.getP= function(){
+            let p= (this.a+this.b) *2;
+            ctx.fillText("Chi vi là : " +p , createCanvas.canvas.width -150,60);
+        }
+        this.createRec= function(){
+
+            ctx.fillStyle="red";
+            ctx.fillRect(this.a,this.b,this.width,this.height);
+            ctx.stroke();
+        }
+
+    }
+
+    window.onload=startProgram();
+
+</script>
+
+</body>
+</html>
