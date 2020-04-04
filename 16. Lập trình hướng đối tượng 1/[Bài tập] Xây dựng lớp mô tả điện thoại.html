@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Xây dựng lớp mô tả điện thoại</title>
+</head>
+<body>
+
+
+<script>
+    // let createCanvas={
+    //     canvas : document.createElement("canvas"),
+    //     makeCanvas(){
+    //         this.canvas.width=500;
+    //         this.canvas.height= 500;
+    //         this.context= this.canvas.getContext("2d");
+    //         document.body.appendChild(this.canvas);
+    //     }
+    // }
+
+    let Mobile = function(name){
+        this.name=name;
+        this.energy=100;
+        this.texting="";
+        this.inBoxMessage=[];
+        this.sendMessage=[];
+        this.status=true;
+        this.checkPhoneStatus =function(){
+            if(this.status)
+                alert(this.name+" đang được bật~");
+            else{
+                alert("Hãy bật "+this.name+" lên~");
+            }
+            alert("Trạng thái pin đang là " + this.energy + "%");
+
+        }
+        this.getOnOff= function(bool){
+            this.status=bool;
+        }
+        this.getEnergy= function(){
+            this.energy +=5;
+        }
+        this.textingMessage =function(str){
+            this.texting= str;
+            this.energy -=1;
+        }
+        this.receiveMessage= function(message){
+            this.inBoxMessage.push(message);
+            this.energy -=1;
+        }
+        this.sendingMessage= function(otherPhone){
+            this.sendMessage.push(this.texting);
+            otherPhone.receiveMessage(this.texting);
+            this.energy-=1;
+        }
+        this.checkInBox= function(){
+            let list = document.createElement("ul");
+            let p = document.createElement("p");
+            p.innerHTML = this.name+": Các tin nhắn đã nhận: ";
+            list.appendChild(p);
+            for(let i =0 ;i <this.inBoxMessage.length; i++){
+                let li_tag= document.createElement("li");
+                li_tag.innerHTML = "Tin nhắn thứ "+i +" là: "+this.inBoxMessage[i];
+                list.appendChild(li_tag);
+            }
+            this.energy-=1;
+            document.body.appendChild(list);
+        }
+        this.checkSendMessage= function(){
+            let list = document.createElement("ul");
+            let p = document.createElement("p");
+            p.innerHTML= this.name+" Các tin nhắn đã gửi ";
+            list.appendChild(p);
+            for(let i = 0; i< this.sendMessage.length ; i++){
+                let li_tag = document.createElement("li");
+                li_tag.innerHTML = i+ ": "+this.sendMessage[i];
+                list.appendChild(li_tag);
+            }
+            this.energy-=1;
+            document.body.appendChild(list);
+        }
+        this.checkAll= function(){
+            this.checkInBox();
+            this.checkSendMessage();
+        }
+    }
+
+
+
+    let nokia = new Mobile("Nokia");
+    let iphone = new Mobile("Iphone");
+    if(nokia.energy == 0){
+        nokia.checkPhoneStatus();
+        nokia.getEnergy();
+    }
+    if(nokia.energy>0){
+        nokia.textingMessage( "Xin chào Iphone");
+        nokia.sendingMessage(iphone);
+
+        iphone.textingMessage("Iphone is number1 đúng không "+ nokia.name);
+        iphone.sendingMessage(nokia);
+        nokia.textingMessage("Đúng thật vậy "+iphone.name +" là điện thoại đẹp");
+        nokia.sendingMessage(iphone);
+
+        nokia.checkAll();
+        iphone.checkAll();
+    }
+</script>
+</body>
+</html>
