@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Xây dựng lớp mô tả Temperature</title>
+    <style>
+        canvas{
+            border:1px solid black;
+            margin:10px;
+            background-color:#ccc;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+
+    let createCanvas = {
+        canvas : document.createElement("canvas"),
+        makeCanvas(){
+            this.canvas.width=500;
+            this.canvas.height=500;
+            this.context= this.canvas.getContext("2d");
+            document.body.appendChild(this.canvas);
+        }
+    }
+    let createTemp= function(doC){
+        this.doC= doC;
+        let ctx= createCanvas.context;
+        this.convertCToF= function(){
+            this.doF = (1.8*this.doC ) +32;
+            ctx.font="14px Arial";
+            ctx.fillStyle="black";
+            ctx.fillText(this.doC +" độ C chuyển sang độ F là : "+this.doF,100,100);
+        }
+    }
+    let myTemp;
+    function startProgram(){
+        createCanvas.makeCanvas();
+        myTemp = new createTemp(40);
+        myTemp.convertCToF();
+    }
+    window.onload= startProgram();
+</script>
+</body>
+</html>
