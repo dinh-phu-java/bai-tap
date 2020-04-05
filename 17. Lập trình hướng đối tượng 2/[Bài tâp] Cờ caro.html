@@ -174,7 +174,7 @@
 
             do{
 
-                if(this.arr[i][j] != true){
+                if(this.arr[i][j] !== true){
                     break;
                 }else if(this.arr[i][j]){
                     console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
@@ -183,20 +183,20 @@
 
                 i++;
                 j--;
-            }while(loop< 4)
+            }while(loop< 4);
 
-                if(countPoint == 4){
+                if(countPoint === 4){
 
-                   if(arrTemp[this.x_axis][this.y_axis] == "x"){
-                        if(arrTemp[otherX_axis][otherY_axis]=="o"){
+                   if(arrTemp[this.x_axis][this.y_axis] === "x"){
+                        if(arrTemp[otherX_axis][otherY_axis]==="o"){
                             alert("không chấp nhận 5 trong");
                         }else{
                             alert(this.sign +" thắng");
                         }
                    }
-                   if(arrTemp[this.x_axis][this.y_axis] == "o"){
+                   if(arrTemp[this.x_axis][this.y_axis] === "o"){
 
-                       if(arrTemp[otherX_axis][otherY_axis]=="x"){
+                       if(arrTemp[otherX_axis][otherY_axis]==="x"){
                            alert("không chấp nhận 5 trong");
                        }else{
                            alert(this.sign +" thắng");
@@ -206,7 +206,7 @@
 
                 }
 
-        }//end check left bottom
+        };//end check left bottom
         this.checkRightBottom =function(x_axis,y_axis){
             this.x_axis =x_axis;
             this.y_axis=y_axis;
@@ -219,7 +219,7 @@
 
             do{
 
-                if(this.arr[i][j] != true){
+                if(this.arr[i][j] !== true){
                     break;
                 }else if(this.arr[i][j]){
                     console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
@@ -228,98 +228,9 @@
 
                 i++;
                 j++;
-            }while(loop< 4)
+            }while(loop< 4);
 
-            if(countPoint == 4){
-
-                if(arrTemp[this.x_axis][this.y_axis] == "x"){
-                    if(arrTemp[otherX_axis][otherY_axis]=="o"){
-                        alert("không chấp nhận 5 trong");
-                    }else{
-                        alert(this.sign +" thắng");
-                    }
-                }
-                if(arrTemp[this.x_axis][this.y_axis] == "o"){
-
-                    if(arrTemp[otherX_axis][otherY_axis]=="x"){
-                        alert("không chấp nhận 5 trong");
-                    }else{
-                        alert(this.sign +" thắng");
-                    }
-
-                }
-
-            }
-        }// end check right bottom
-
-        this.checkRightTop= function(x_axis,y_axis){
-            this.x_axis =x_axis;
-            this.y_axis=y_axis;
-            let otherX_axis = Number(this.x_axis) + 1;
-            let otherY_axis=Number(this.y_axis)-1;
-            let countPoint=0;
-            let loop  = 0;
-            let i = Number(this.x_axis)  - 1;
-            let j= Number(this.y_axis) + 1;
-
-            do{
-
-                if(this.arr[i][j] != true){
-                    break;
-                }else if(this.arr[i][j]){
-                    console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
-                    countPoint++;
-                }
-
-                i--;
-                j++;
-            }while(loop< 4)
-
-            if(countPoint == 4){
-
-                if(arrTemp[this.x_axis][this.y_axis] == "x"){
-                    if(arrTemp[otherX_axis][otherY_axis]=="o"){
-                        alert("không chấp nhận 5 trong");
-                    }else{
-                        alert(this.sign +" thắng");
-                    }
-                }
-                if(arrTemp[this.x_axis][this.y_axis] == "o"){
-
-                    if(arrTemp[otherX_axis][otherY_axis]=="x"){
-                        alert("không chấp nhận 5 trong");
-                    }else{
-                        alert(this.sign +" thắng");
-                    }
-
-                }
-
-            }
-        }//end check right top
-        this.checkLeftTop=function(x_axis,y_axis){
-            this.x_axis =x_axis;
-            this.y_axis=y_axis;
-            let otherX_axis = Number(this.x_axis) + 1;
-            let otherY_axis=Number(this.y_axis)+1;
-            let countPoint=0;
-            let loop  = 0;
-            let i = Number(this.x_axis)  - 1;
-            let j= Number(this.y_axis) - 1;
-
-            do{
-
-                if(this.arr[i][j] != true){
-                    break;
-                }else if(this.arr[i][j]){
-                    console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
-                    countPoint++;
-                }
-
-                i--;
-                j--;
-            }while(loop< 4)
-
-            if(countPoint == 4){
+            if(countPoint === 4){
 
                 if(arrTemp[this.x_axis][this.y_axis] === "x"){
                     if(arrTemp[otherX_axis][otherY_axis]==="o"){
@@ -339,7 +250,96 @@
                 }
 
             }
-        }// end left top
+        };// end check right bottom
+
+        this.checkRightTop= function(x_axis,y_axis){
+            this.x_axis =x_axis;
+            this.y_axis=y_axis;
+            let otherX_axis = Number(this.x_axis) + 1;
+            let otherY_axis=Number(this.y_axis)-1;
+            let countPoint=0;
+            let loop  = 0;
+            let i = Number(this.x_axis)  - 1;
+            let j= Number(this.y_axis) + 1;
+
+            do{
+
+                if(this.arr[i][j] !== true){
+                    break;
+                }else if(this.arr[i][j]){
+                    console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
+                    countPoint++;
+                }
+
+                i--;
+                j++;
+            }while(loop< 4);
+
+            if(countPoint === 4){
+
+                if(arrTemp[this.x_axis][this.y_axis] === "x"){
+                    if(arrTemp[otherX_axis][otherY_axis]==="o"){
+                        alert("không chấp nhận 5 trong");
+                    }else{
+                        alert(this.sign +" thắng");
+                    }
+                }
+                if(arrTemp[this.x_axis][this.y_axis] === "o"){
+
+                    if(arrTemp[otherX_axis][otherY_axis]==="x"){
+                        alert("không chấp nhận 5 trong");
+                    }else{
+                        alert(this.sign +" thắng");
+                    }
+
+                }
+
+            }
+        };//end check right top
+        this.checkLeftTop=function(x_axis,y_axis){
+            this.x_axis =x_axis;
+            this.y_axis=y_axis;
+            let otherX_axis = Number(this.x_axis) + 1;
+            let otherY_axis=Number(this.y_axis)+1;
+            let countPoint=0;
+            let loop  = 0;
+            let i = Number(this.x_axis)  - 1;
+            let j= Number(this.y_axis) - 1;
+
+            do{
+
+                if(this.arr[i][j] !== true){
+                    break;
+                }else if(this.arr[i][j]){
+                    console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
+                    countPoint++;
+                }
+
+                i--;
+                j--;
+            }while(loop< 4);
+
+            if(countPoint === 4){
+
+                if(arrTemp[this.x_axis][this.y_axis] === "x"){
+                    if(arrTemp[otherX_axis][otherY_axis]==="o"){
+                        alert("không chấp nhận 5 trong");
+                    }else{
+                        alert(this.sign +" thắng");
+                    }
+                }
+                if(arrTemp[this.x_axis][this.y_axis] === "o"){
+
+                    if(arrTemp[otherX_axis][otherY_axis]==="x"){
+                        alert("không chấp nhận 5 trong");
+                    }else{
+                        alert(this.sign +" thắng");
+                    }
+
+                }
+
+            }
+        };// end left top
         this.checkLeft=function(x_axis,y_axis){
             this.x_axis =x_axis;
             this.y_axis=y_axis;
@@ -352,7 +352,7 @@
 
             do{
 
-                if(this.arr[i][j] != true){
+                if(this.arr[i][j] !== true){
                     break;
                 }else if(this.arr[i][j]){
                     console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
@@ -361,20 +361,20 @@
 
 
                 j--;
-            }while(loop< 4)
+            }while(loop< 4);
 
-            if(countPoint == 4){
+            if(countPoint === 4){
 
-                if(arrTemp[this.x_axis][this.y_axis] == "x"){
-                    if(arrTemp[otherX_axis][otherY_axis]=="o"){
+                if(arrTemp[this.x_axis][this.y_axis] === "x"){
+                    if(arrTemp[otherX_axis][otherY_axis]==="o"){
                         alert("không chấp nhận 5 trong");
                     }else{
                         alert(this.sign +" thắng");
                     }
                 }
-                if(arrTemp[this.x_axis][this.y_axis] == "o"){
+                if(arrTemp[this.x_axis][this.y_axis] === "o"){
 
-                    if(arrTemp[otherX_axis][otherY_axis]=="x"){
+                    if(arrTemp[otherX_axis][otherY_axis]==="x"){
                         alert("không chấp nhận 5 trong");
                     }else{
                         alert(this.sign +" thắng");
@@ -383,7 +383,7 @@
                 }
 
             }
-        }// end left
+        };// end left
         this.checkRight=function(x_axis,y_axis){
             this.x_axis =x_axis;
             this.y_axis=y_axis;
@@ -405,7 +405,7 @@
 
 
                 j++;
-            }while(loop< 4)
+            }while(loop< 4);
 
             if(countPoint === 4){
 
@@ -427,7 +427,7 @@
                 }
 
             }
-        }//end right
+        };//end right
         this.checkTop=function(x_axis,y_axis){
             this.x_axis =x_axis;
             this.y_axis=y_axis;
@@ -449,7 +449,7 @@
 
 
                 i--;
-            }while(loop< 4)
+            }while(loop< 4);
 
             if(countPoint === 4){
 
@@ -471,7 +471,7 @@
                 }
 
             }
-        }//end top
+        };//end top
         this.checkBottom= function(x_axis,y_axis){
             this.x_axis =x_axis;
             this.y_axis=y_axis;
@@ -493,7 +493,7 @@
 
 
                 i++;
-            }while(loop< 4)
+            }while(loop< 4);
 
             if(countPoint === 4){
 
@@ -516,7 +516,7 @@
 
             }
         }
-    }
+    };
     let x;
     let o;
     let arrTemp;
