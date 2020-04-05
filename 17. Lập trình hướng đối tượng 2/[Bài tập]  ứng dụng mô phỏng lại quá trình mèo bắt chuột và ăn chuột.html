@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Phát triển ứng dụng mô phỏng lại quá trình mèo bắt chuột và ăn chuột</title>
+</head>
+<body>
+
+
+<script>
+
+    let Rat= function(name,weight,speed){
+        this.name=name;
+        this.weight=weight;
+        this.speed=speed;
+        this.life=true
+        this.isDie=function(){
+            if(this.life===false){
+                return false;
+            }else{
+                return true;
+            }
+        };
+        this.speak=function(str){
+            console.log(this.name +" say that: "+str);
+        }
+
+    }
+    let Cat = function(name,weight,speed){
+        this.name=name;
+        this.weight=weight;
+        this.speed=speed;
+        this.speak=function(str){
+            console.log(this.name+" say that" +str);
+        }
+        this.catchRat=function(rat){
+            if(this.speed > rat.speed && rat.isDie() ===false){
+
+                this.eatRat(rat);
+
+            }
+        }
+        this.eatRat=function(rat){
+            this.weight+=rat.weight;
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
