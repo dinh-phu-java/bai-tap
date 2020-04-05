@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cờ caro</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        table{
+            border-collapse:collapse;
+            width:920px;
+        }
+        table td{
+            box-sizing: border-box;
+            font-family: Arial;
+            font-size:20px;
+            text-align: center;
+            width:20px;
+            height:30px;
+
+
+            border:1px solid black;
+        }
+        table td:after{
+            content:" ";
+        }
+    </style>
+</head>
+
+<body>
+
+
+<script >
+
+    // let table = document.createElement("table");
+    // table.border=1;
+    // let i; let j;
+    // i=0;
+    // do{
+    //     let tr=document.createElement("tr");
+    //
+    //     for(j=0;j<25; j++){
+    //         let td= document.createElement("td");
+    //         td.id="tr"+i +"td"+j;
+    //         td.innerHTML=j;
+    //         tr.appendChild(td);
+    //     }
+    //     table.appendChild(tr);
+    //
+    //     i++;
+    //
+    // }while(i<25)
+    // document.body.appendChild(table);
+    //
+    // let test= document.querySelector("#tr24td2");
+    // test.style.backgroundColor="red";
+    // test.style.fontWeight="bold";
+    // console.log(test.id.indexOf("r"));
+    // console.log(test.id.substring(test.id.indexOf("r")+1, test.id.indexOf("d")-1));
+    // let table_tag= document.querySelector("table");
+    // table_tag.onclick= function(ev){
+    //     if(ev.target.matches("td")){
+    //         console.log(ev.target.id);
+    //
+    //     }
+    // }
+
+    let createTable = {
+        table: document.createElement("table"),
+        size:25,
+        i:0,
+        count:1,
+        makeTable(){
+
+        do{
+             this.tr=document.createElement("tr");
+            for(let j=0;j<this.size; j++){
+                 this.td= document.createElement("td");
+                this.td.id="tr"+this.i +"td"+j;
+                this.tr.appendChild(this.td);
+            }
+            this.table.appendChild(this.tr);
+            this.i++;
+        }while(this.i<this.size);
+
+        document.body.appendChild(this.table);
+        this.table.addEventListener('click',function(ev){
+
+            if(ev.target.matches("td")){
+                // console.log(ev.target.id); //tr16td5
+                // console.log(createTable.getRowId(ev.target.id));
+                // console.log(createTable.getDataID(ev.target.id));
+                let key = ev.target;
+                let key_value=key.innerHTML;
+
+
+                //do some code
+                if(key_value == ""){
+                    if(createTable.count % 2 == 0 ){
+                        key.style.color="blue";
+                        let x_axis = createTable.getRowId(key.id);
+                        let y_axis = createTable.getDataID(key.id);
+                        o.getSign(key);
+                        o.fillPosition(x_axis,y_axis);
+                      //  o.checkLeftBottom(x_axis,y_axis);
+                        //console.log(key.id);
+                        createTable.count++;
+
+
+
+                    }else{
+                        key.style.color="red";
+                        let x_axis = createTable.getRowId(key.id);
+                        let y_axis = createTable.getDataID(key.id);
+                        x.getSign(key);
+                        x.fillPosition(x_axis,y_axis);
+                        x.checkLeftBottom(x_axis,y_axis);
+                        console.log(key.id);
+                        createTable.count++;
+
+                    }
+                }
+
+            }
+
+        });
+        },
+        getRowId(str){
+            let rowId=str.substring(str.indexOf("r")+1, str.indexOf("d")-1);
+            return rowId;
+        },
+        getDataID(str){
+            let dataId=str.substring(str.indexOf("d")+1);
+            return dataId;
+        },
+
+    }
+    let component = function(size,sign){
+        this.size=size;
+        this.sign=sign;
+        this.arr= new Array();
+        for(let i =0 ;i<this.size;i++){
+            for(let j=0;j<this.size;j++){
+                this.arr[i]=new Array();
+                this.arr[i][j]=false;
+            }
+        };
+        this.getArr=function(){
+            return this.arr;
+        }
+        this.getSign = function(target){
+            target.innerText=this.sign;
+        }
+        this.fillPosition =function(a,b){
+            this.arr[a][b]=true;
+        }
+        this.checkLeftBottom=function(x_axis,y_axis){
+            let checkPoint =true;
+            this.x_axis =x_axis;
+            this.y_axis=y_axis;
+            let countPoint=0;
+            let loop  = 0;
+            let i = Number(this.x_axis)  + 1;
+            let j= Number(this.y_axis) - 1;
+
+            do{
+
+                if(this.arr[i][j] != true){
+                    break;
+                }else if(this.arr[i][j]){
+                    console.log("array o vi tri arr["+i+"]["+j+"] la: "+this.arr[i][j]);
+                    countPoint++;
+                }
+
+                i++;
+                j--;
+            }while(loop< 4)
+
+            if(countPoint == 4){
+                alert("left bottom won");
+            }else{
+                console.log("check left bottom false");
+            }
+
+        }
+    }
+    let x;
+    let o;
+    function startProgram(){
+        createTable.makeTable();
+         x=new component(createTable.size,"x");
+         o= new component(createTable.size,"o");
+
+
+    }
+    window.onload=startProgram();
+</script>
+
+</body>
+</html>
