@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập] Kiểm tra từ đối xứng</title>
+</head>
+<body>
+
+<script>
+    function isPalindrome(s){
+        let check=true;
+        for(let i= 0; i< Math.floor(s.length /2) ;i++){
+           if(s.charAt(i) == s.charAt(s.length-1 -i)){
+               console.log(s.charAt(i));
+               console.log(s.charAt(s.length-1+i));
+           }else{
+               check=false;
+               break;
+           }
+        }
+        return check;
+    }
+    let str= "abc123321cba";
+   
+    let isPalind= isPalindrome(str);
+    if(isPalind){
+        console.log(str +" là chuỗi đối xứng");
+    }else{
+        console.log(str + " không là chuỗi đối xứng");
+    }
+</script>
+</body>
+</html>
