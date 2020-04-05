@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Tìm giá trị lớn nhất trong mảng</title>
+</head>
+<body>
+
+    <script>
+        let x = [-3, 5, 50, 3, 2, 10];
+
+       let k= x.reduce(   function(a,x){
+            let max=a;
+            if(a<x){
+                max=x;
+            }
+            return max;
+            });
+        console.log(k);
+    </script>
+</body>
+</html>
