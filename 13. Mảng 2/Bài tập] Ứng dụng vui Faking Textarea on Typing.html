@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập] Ứng dụng vui Faking Textarea on Typing</title>
+</head>
+<body>
+<textarea name="text_area" id="text_area" cols="30" rows="10" ></textarea>
+    <script>
+        let text_area =document.getElementById("text_area");
+        let count=0;
+        window.addEventListener('keydown',function(){
+            let arr1=["H","e","l","l","o"," ","W","o","r","l","d","!"];
+            if(count < arr1.length){
+                text_area.value += delay(arr1,count);
+                count++;
+            }
+        });
+
+        function delay(arr,n){
+
+
+                return arr[n];
+
+        }
+
+        console.log(delay(0));
+    </script>
+</body>
+</html>
