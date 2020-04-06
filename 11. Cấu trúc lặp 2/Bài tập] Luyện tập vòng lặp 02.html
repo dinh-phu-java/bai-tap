@@ -43,10 +43,7 @@
         <button id="bai3">Bài 3</button>
         <button id="bai4">Bài 4</button>
         <button id="bai5">Bài 5</button>
-        <button id="bai6">Bài 6</button>
-        <button id="bai7">Bài 7</button>
-        <button id="bai8">Bài 8</button>
-        <button id="bai9">Bài 9</button>
+        
 
     </div>
 </article>
@@ -63,174 +60,111 @@
     const btnBai9= document.getElementById("bai9");
     const noiDungBai= document.getElementById("noidungbai");
 
-    btnBai1.onclick= function(){
-        noiDungBai.innerText= "Bài 1- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử. Chương trình thực hiện tính và hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10."
-        let arr = new Array(10);
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor(Math.random()*100);
+    var fibonacci_series = function (n)
+    {
+        if (n===1)
+        {
+            return [0, 1];
         }
-        let m=arr.reduce(function(a,x){
-            let max=a;
-            if(max < x){
-                max=x;
+        else
+        {
+            var s = fibonacci_series(n - 1);
+            s.push(s[s.length - 1] + s[s.length - 2]);
+            return s;
+        }
+    };
+
+        function factorialize(num) {
+            for (a=1; num>=1; num--) {
+                a = a*num;
             }
-            return max;
-        });
-        alert("số lớn nhất trong mảng là "+m);
+            return a;
+        }
+
+
+    btnBai1.onclick= function(){
+        noiDungBai.innerText= "Bài 1: In dãy Finonaci";
+
+        alert(fibonacci_series(8));
     }
 
 
     btnBai2.onclick= function(){
-        noiDungBai.innerText= "Bài 2- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử khác nhau. Chương trình hiển thị ra được phần tử có giá trị lớn nhất trong mảng và vị trí của phần tử đó.";
+        noiDungBai.innerText= "Bài 2: Tính giai thừa của một số nguyên dương";
 
-        let arr = new Array(10);
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor(Math.random()*100);
-        }
-        let m=arr.reduce(function(a,x){
-            let max=a;
-            if(max < x){
-                max=x;
-            }
-            return max;
-        });
-        alert("số lớn nhất trong mảng là "+m + " ở vị trí thứ: " + arr.indexOf(m));
+        alert(factorialize(5));
 
     }
 
     btnBai3.onclick= function(){
-        noiDungBai.innerText= "Bài 3- Viết chương trình khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất trong mảng đó. In ra giá trị trung bình của các phần tử trong mảng.";
-
-        let arr = new Array(10);
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor(Math.random()*100);
-        }
-        let m=arr.reduce(function(a,x){
-            let max=a;
-            if(max < x){
-                max=x;
+        noiDungBai.innerText= "Bài 3: In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau";
+        let star="";
+        for(let i =0 ;i < 5;i++){
+            let p_tag= document.createElement("p");
+            for (let j=0 ;j<i+1;j++){
+                p_tag.innerText= p_tag.innerText+"*";
             }
-            return max;
-        });
-        let s= arr.reduce(function(a,x){
-            a +=x;
-            return a;
-        },a=0)
-        alert("số lớn nhất trong mảng là "+m + " tổng các số trong mảng là " + s);
+            ketQua.appendChild(p_tag);
+        }
+        for(let i =0 ;i < 5;i++){
+            let p_tag= document.createElement("p");
+            for (let j=4 ;j>i-1;j--){
+                p_tag.innerText= p_tag.innerText+"*";
+            }
+            ketQua.appendChild(p_tag);
+        }
 
     }
 
 
 
     btnBai4.onclick= function(){
-        noiDungBai.innerText= "Bài 4- Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.";
+        noiDungBai.innerText= "Bài 4- In hình chữ nhật";
+        let star="";
+        for(let i=0;i<6;i++){
+            let p_tag= document.createElement("p");
+            if(i==0 || i==5 ){
 
-        let arr = new Array(10);
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor(Math.random()*100);
+                for(let j=0;j<11;j++){
+                    p_tag.innerText= p_tag.innerText+"*";
+                }
+
+            }else{
+                p_tag.innerText =p_tag.innerText+"*";
+                for(let j=0;j<8;j++){
+                    p_tag.innerText= p_tag.innerText+"- ";
+                }
+                p_tag.innerText=p_tag.innerText +"*";
+            }
+            ketQua.appendChild(p_tag);
         }
 
-        alert("mảng đảo ngược là "+ arr.reverse());
+    }
 
-
+    function tinhLaiNganHang(tien_ban_dau,so_thang_vay,lai_xuat_hang_thang){
+        let tong_lai=tien_ban_dau;
+            for(let i=0;i<so_thang_vay;i++){
+                tong_lai =tong_lai + (tong_lai*lai_xuat_hang_thang);
+            }
+        return tong_lai;
     }
 
     btnBai5.onclick= function(){
-        noiDungBai.innerText= "Bài 5- Viết chương trình đếm số nguyên âm trong một chuỗi";
+        noiDungBai.innerText= "Bài 5: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.";
 
-        let arr = new Array(10);
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor( (Math.random()*100) -60);
-        }
-        let c=arr.reduce(function(a,x){
-
-            if(x<0){
-                a++;
-            }
-
-            return a;
-        },a=0);
-
-
-        alert("số nguyên âm trong mảng là  "+ c);
+        // let tien_ban_dau = prompt("Số tiền ban đầu:");
+        // let so_thang_vay= prompt("Số tháng vay");
+        // let lai_xuat =prompt("lãi xuất hàng tháng");
+        //
+        // let tong_tien= tinhLaiNganHang(tien_ban_dau,so_thang_vay,lai_xuat);
+            let tong_tien =(tinhLaiNganHang(1000,12,0.8),2);
+        alert("Số tiền phải trả là: "+ tong_tien);
 
 
     }
 
 
-    btnBai6.onclick= function(){
-        noiDungBai.innerText= "Bài 6: iết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình tìm xem V có nằm trong mảng số nguyên không? Nếu V thuộc mảng số nguyên thì in ra \"V is in the array\" còn lại in ra \"V is not in the array\".";
 
-        let arr = new Array(10);
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor( (Math.random()*20));
-        }
-        let input_no= prompt("nhập số nguyên từ 1 đến 10");
-
-        let k = arr.some(x => x==input_no);
-
-        if(k==true){
-            alert("có trong mảng: " + arr.join(','));
-        }else{
-            alert("không có trong mảng: "+ arr.join(','));
-        }
-
-    }
-    btnBai7.onclick= function(){
-        noiDungBai.innerText= "Bài 7: Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình kiểm tra xem V có thuộc mảng đã cho không, nếu V thuộc mảng đã cho xoá V khỏi mảng .";
-
-        let arr = new Array(10);
-        //  let arr1= [2,1,4,3,5,6,7,2,1];
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor( (Math.random()*10));
-        }
-        let input_no= prompt("nhập số nguyên từ 1 đến 10");
-
-        let k = arr.some(x => x==input_no);
-
-        if(k==true){
-            let index= arr.indexOf(Number(input_no) );
-            console.log(index);
-            arr.splice(index,1);
-            alert("có trong mảng: " + arr.join(',') +" ở vị trí thứ "+index);
-
-
-        }else{
-            alert("không có trong mảng: "+ arr.join(','));
-        }
-
-    }
-
-    btnBai8.onclick= function(){
-        noiDungBai.innerText= "Bài 8- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử. Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.";
-
-        let arr = new Array(10);
-
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor( (Math.random()*10));
-        }
-
-        arr.sort((a,b) => a-b);
-
-        alert("Mảng sau khi sắp xếp là: "+arr.join(','));
-    }
-
-    btnBai9.onclick= function(){
-        noiDungBai.innerText= "Bài 9- Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên. Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.";
-
-        let arr = new Array(10);
-        let arr2= new Array(10);
-
-        for(let i=0;i<arr.length;i++){
-            arr[i]=Math.floor( (Math.random()*10));
-        }
-        for(let i=0;i<arr2.length;i++){
-            arr2[i]=Math.floor( (Math.random()*10));
-        }
-        let c= arr.concat(arr2);
-
-        alert("Mảng sau khi gộp là: "+c.join(','));
-    }
 </script>
 </body>
 </html>
