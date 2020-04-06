@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập] Luyện tập vòng lặp 01</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    article{
+        width:920px;
+        border:1px solid black;
+        margin:10px auto;
+
+    }
+    div#ketqua{
+        width:100%;
+        height:500px;
+        border-bottom:1px solid black;
+        padding:10px;
+    }
+    div#wrap_btn {
+
+        padding:10px;
+    }
+    div#wrap_btn button{
+        padding:5px 10px;
+        box-shadow: 0 0 10px rgba(38, 139, 255,0.7);
+        margin-right:10px;
+    }
+</style>
+<body>
+<article>
+    <div id="ketqua">
+        <h2 id="noidungbai"></h2>
+    </div>
+    <div id="wrap_btn">
+        <button id="bai1">Bài 1</button>
+        <button id="bai2">Bài 2</button>
+        <button id="bai3">Bài 3</button>
+        <button id="bai4">Bài 4</button>
+        
+
+    </div>
+</article>
+<script>
+    const ketQua= document.getElementById("ketqua");
+    const btnBai1= document.getElementById("bai1");
+    const btnBai2= document.getElementById("bai2");
+    const btnBai3= document.getElementById("bai3");
+    const btnBai4= document.getElementById("bai4");
+
+    const noiDungBai= document.getElementById("noidungbai");
+
+    btnBai1.onclick= function(){
+        noiDungBai.innerText= "Bài 1: Sử dụng vòng lặp để đếm từ 1 đến 100. Khi số là 99, hiển thị hộp thoại thông báo là đã hoàn thành."
+
+        for (let i =0; i< 100; i++ ){
+            if(i==99){
+                alert("hoan thanh");
+            }
+        }
+    }
+
+
+    btnBai2.onclick= function(){
+        noiDungBai.innerText= "Bài 2: Sử dụng hàm prompt() để lấy thông tin nhiệt độ hiện tại được nhập bởi người truy cập. Nếu nhiệt độ nhập vào trên 100, yêu cầu người dùng giảm nhiệt độ. Nếu nhiệt độ dưới 20, yêu cầu người dùng tăng nhiệt độ.";
+        let a;
+        do{
+             a= prompt("nhập nhiệt độ");
+            if(a>100){
+                alert("giảm nhiệt đô");
+            }
+            if(a<20){
+                alert("tăng nhiệt đô");
+            }
+        }while(a > 100 || a<20);
+
+    }
+
+    btnBai3.onclick= function(){
+        noiDungBai.innerText= "Bài 3: Tính tổng của 30 số chia hết cho 7 đầu tiên trong các số tự nhiên.";
+
+        let count= 0;
+        let i=7;
+        let sum=0;
+        do{
+            if(i%7==0){
+                sum+=7;
+            }
+            count++;
+        }while(count <30);
+
+        alert("keết quả là "+ sum);
+    }
+
+
+
+    btnBai4.onclick= function(){
+        noiDungBai.innerText= "Bài 4- Hãy viết một chương trình in ra các số từ 1 đến 100. Nhưng nếu số chia hết cho 3 thì in ra \"Fizz\", 5 thì in ra \"Buzz\" thay vì in ra số đó. Và nếu số đó chia hết cho cả 3 và 5 thì in ra chữ \"FizzBuzz\".";
+
+        for(let i=0 ;i<100;i++){
+            console.log(i);
+            if( (i % 5 == 0) && (i % 3 ==0) ){
+                console.log("FizzBuzz");
+            }else if(i% 5 == 0){
+                console.log("Fizz");
+            }else if(i%3 ==0){
+                console.log("Buzz");
+            }
+        }
+
+
+    }
+
+
+</script>
+</body>
+</html>
