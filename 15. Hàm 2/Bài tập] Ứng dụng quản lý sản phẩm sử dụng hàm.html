@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập] Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        table{
+            width:920px;
+            margin:10px auto;
+            border-collapse :collapse;
+        }
+        table caption{
+            text-align: left;
+            margin:15px 10px;
+            font-family: Arial,"Times New Roman",sans-serif;
+            font-size:1.2em;
+            color: #365eff;
+        }
+        table th{
+            display:none;
+        }
+        table td{
+            padding:5px 7px;
+        }
+        table tr td:nth-of-type(n+2){
+            text-align:center;
+        }
+        table tr td:nth-of-type(2) input[type="submit"]{
+            background: #00ff49;
+            border:1px solid #00ff49;
+        }
+        table tr td:nth-of-type(3) input[type="submit"]{
+            background: red;
+            border:1px solid red;
+        }
+        table tr td input[type="submit"] {
+            width:60%;
+            padding:7px 10px;
+
+            border-radius:4px;
+            color:white;
+            font-size: 1em;
+        }
+        table tr td input[type="text"]{
+            width:100%;
+            padding:7px 10px;
+            border:1px solid black;
+            border-radius:4px;
+        }
+        table tr td input[type="text"]:hover{
+            border:1px solid #5493ff;
+            border-radius:4px;
+        }
+        table tr td input[type="text"]:focus{
+            border:1px solid #5493ff;
+            border-radius:4px;
+        }
+
+        table tr td input[type="submit"]:hover{
+            cursor:pointer;
+
+        }
+        table tr td button{
+            width:60%;
+            padding:7px 10px;
+            border:1px solid ;
+            border-radius:4px;
+            color:white;
+            font-size: 1em;
+            background-color:#00ff49;
+
+        }
+        table tr td button:hover{
+            cursor: pointer;
+        }
+        table tr td button[name="delete"]{
+            background-color:red;
+        }
+        #product_name{
+            width:60%;
+        }
+        #edit{
+            width:20%;
+
+        }
+        #delete{
+            width:20%;
+        }
+    </style>
+</head>
+<body>
+<!--    <table border="1" id="main_table">-->
+<!--        <caption>Product Name</caption>-->
+<!--        <colgroup>-->
+<!--            <col id="product_name">-->
+<!--            <col id="edit">-->
+<!--            <col id="delete">-->
+<!--        </colgroup>-->
+<!--        <tr>-->
+<!--            <th scope="product_name"></th>-->
+<!--            <th scope="edit"></th>-->
+<!--            <th scope="delete"></th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td><input type="text" id="product_input_name"></td>-->
+<!--            <td colspan="2"><input type="submit" id="add_product" value="Add"></td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash;-->
+<!--        <tr>-->
+<!--            <td >Sony Xperia Test</td>-->
+<!--            <td ><input type="submit" value="Edit"></td>-->
+<!--            <td ><input type="submit" value="Delete"></td>-->
+<!--        </tr>-->
+<!--        &ndash;&gt;-->
+
+<!--    </table>-->
+
+<script>
+
+
+    let arrayTemp=new Array("Nokia","Sony Xperia","Xiao mi");
+
+        let createTable = {
+
+            makeTable(){
+                createTable.createTableHeading();
+                for(let i = 0 ;i < arrayTemp.length; i++){
+                    createTable.addRow(arrayTemp[i]);
+
+                }
+                document.body.appendChild(this.table);
+
+            },
+
+
+
+            makeElement(element){
+                return document.createElement(element);
+            },
+            createTableHeading(){
+                this.table = document.createElement("table");
+                this.table.border="1";
+                this.table.id="main_table";
+                this.table.innerHTML= "<caption>Production Name</caption>" +
+                    "<colgroup>" +
+                    "           <col id='product_name'>" +
+                    "        <col id='edit'>" +
+                    "        <col id='delete'>" +
+                    "   </colgroup>" +
+                    "<tr> " +
+                    "<th scope='product_name'></th>" +
+                    "<th scope='edit'></th>" +
+                    "<th scope='delete'></th>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td><input type='text'  id='product_input_name'></td>" +
+                    "<td colspan='2'><button id='add_product'>Add</button></td>" +
+                    "</tr>"
+                ;
+            },
+            addRow(value){
+                let tr=document.createElement("tr");
+                let td1= createTable.makeElement("td");
+                let td2= createTable.makeElement("td");
+                let td3= createTable.makeElement("td");
+                let input2= createTable.makeElement("button");
+                let input3= createTable.makeElement("button");
+                input2.name="edit";
+                input2.innerText="Edit";
+                input3.name="delete";
+                input3.innerText="Delete";
+                td1.innerHTML= value;
+                td1.name=value;
+                td2.appendChild(input2);
+                td3.appendChild(input3);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                createTable.table.appendChild(tr);
+            },
+            deleteRow(arr,value){
+                arr.reduce(function(a,x){
+                    if(value == x){
+                        arr.splice(arr.indexOf(value),1);
+                    }
+                },a=value);
+            }
+        }
+
+            createTable.makeTable();
+             let main_tab = document.getElementById("main_table");
+             let add_product= document.getElementById("add_product");
+
+
+             main_tab.addEventListener('click',function(ev){
+                 if(ev.target.matches("button")){
+
+                     if(ev.target.name.toLowerCase()==="delete"){
+                         alert("access delete");
+                         let target_tag = ev.target.parentNode.parentNode;
+                         let target_name = ev.target.parentNode.parentNode.firstElementChild.name;
+                         // xoa hien thi bang
+                         createTable.table.removeChild(target_tag);
+                         // xoa thanh phan trong mang
+                        createTable.deleteRow(arrayTemp,target_name);
+
+
+                     }
+                    if(ev.target.name.toLowerCase()==='edit'){
+                        let newName=prompt("Nhập tên mới:");
+                        let target_tag= ev.target.parentNode.parentNode.firstElementChild;
+                        let target_name= target_tag.innerText;
+
+                        // thay đổi trên mảng
+                        let k =arrayTemp.indexOf(target_name);
+                        arrayTemp[k]=newName;
+                        //tìm đối tượng để đổi trên bảng
+                         target_tag.innerText=newName;
+
+                    }
+
+                 }
+
+             })
+
+            add_product.addEventListener('click',function(){
+                let input_text = document.getElementById("product_input_name");
+                if(input_text.value != ""){
+                    arrayTemp.push(input_text.value);
+
+                    createTable.addRow(arrayTemp[arrayTemp.length-1]);
+                    input_text.value ="";
+                }else{
+                    alert("Name không được trống");
+                }
+
+            });
+
+
+
+
+
+</script>
+</body>
+</html>
