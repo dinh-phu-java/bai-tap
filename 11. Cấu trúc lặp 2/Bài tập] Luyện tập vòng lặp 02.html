@@ -98,23 +98,39 @@
 
     btnBai3.onclick= function(){
         noiDungBai.innerText= "Bài 3: In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau";
-        let star="";
-        for(let i =0 ;i < 5;i++){
-            let p_tag= document.createElement("p");
-            for (let j=0 ;j<i+1;j++){
-                p_tag.innerText= p_tag.innerText+"*";
+        // let star="";
+        // for(let i =0 ;i < 5;i++){
+        //     let p_tag= document.createElement("p");
+        //     for (let j=0 ;j<i+1;j++){
+        //         p_tag.innerText= p_tag.innerText+"*";
+        //     }
+        //     ketQua.appendChild(p_tag);
+        // }
+        // for(let i =0 ;i < 5;i++){
+        //     let p_tag= document.createElement("p");
+        //     for (let j=4 ;j>i-1;j--){
+        //         p_tag.innerText= p_tag.innerText+"*";
+        //     }
+        //     ketQua.appendChild(p_tag);
+        // }
+        let width = 5; height=8;
+        let p_tag= document.createElement("p");
+        let k = 4;
+
+            for (let d=1 ; d <= 5;d++){
+                p_tag.innerText += "_ ";
+                if(d >= k){
+                    p_tag.innerText +="*";
+                    k--;
+                }
             }
-            ketQua.appendChild(p_tag);
-        }
-        for(let i =0 ;i < 5;i++){
-            let p_tag= document.createElement("p");
-            for (let j=4 ;j>i-1;j--){
-                p_tag.innerText= p_tag.innerText+"*";
-            }
+
             ketQua.appendChild(p_tag);
         }
 
-    }
+
+
+
 
 
 
@@ -124,15 +140,13 @@
         for(let i=0;i<6;i++){
             let p_tag= document.createElement("p");
             if(i==0 || i==5 ){
-
-                for(let j=0;j<11;j++){
+                for(let j=0;j<25;j++){
                     p_tag.innerText= p_tag.innerText+"*";
                 }
-
             }else{
                 p_tag.innerText =p_tag.innerText+"*";
-                for(let j=0;j<8;j++){
-                    p_tag.innerText= p_tag.innerText+"- ";
+                for(let j=0;j<23;j++){
+                    p_tag.innerText= p_tag.innerText+'\u2002';
                 }
                 p_tag.innerText=p_tag.innerText +"*";
             }
